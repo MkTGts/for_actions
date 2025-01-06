@@ -9,7 +9,7 @@ jobs:
         run: echo "Some text."
       - name: Command in Multiline
         run: |-
-          Hello World!
+          echo Hello World!
           node -v
           npm -v 
           python3 --version
