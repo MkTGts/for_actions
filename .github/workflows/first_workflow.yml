@@ -13,10 +13,6 @@ jobs:
           node -v
           npm -v 
           python3 --version
-      - name: Go now date and time
-        run: |-
-          python3
-          from datetime import datetime
-          print(datetime.now())
+
           
 
