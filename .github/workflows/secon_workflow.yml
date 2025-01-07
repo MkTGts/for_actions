@@ -1,0 +1,24 @@
+name: Second workflowon
+on: push
+
+jobs:
+  run-first-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Node and Python versions on Ubuntu
+        run: |-
+            node -v 
+            python3 --version
+  run-parallel-command:
+    runs-on: windows-latest
+    steps:
+      - name: Node and Python versions on Windows
+        run: |-
+            node -v
+            python --version
+  run-second-comand:
+    runs-on: macos-latest
+    needs: run-first-command
+    steps:
+      - name: Display node verions on MacOS.
+        run: node -v
