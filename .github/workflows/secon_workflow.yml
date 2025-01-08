@@ -18,7 +18,7 @@ jobs:
             python --version
   run-second-comand:
     runs-on: macos-latest
-    needs: run-first-command
+    needs: run-first-command  # запускается только в случае выполнения указанного джоба
     steps:
       - name: Display node verions on MacOS.
         run: node -v

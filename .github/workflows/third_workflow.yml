@@ -8,7 +8,8 @@ jobs:
       - name: File list 
         run: |-
           ls -l
-      #- uses: actions/checkout@v4
+      #- uses: actions/checkout@v4  # использование экшина для копирования файлов с репы в на экшн-вм
+      #  или можно споосбом вручную как сделано ниже
       - name: Copy files
         run: |
           git init
