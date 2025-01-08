@@ -5,8 +5,10 @@ jobs:
   run-command:
     runs-on: ubuntu-latest
     steps:
-      - name: Display pwd and ls
+      - name: File list and copy repo
         run: |-
-            pwd
-            cd /home/runner
-            ls -a
+          ls -l
+      - uses: actions/checkout@v4
+      - name: File list after copying
+        run: |-
+          ls -l
