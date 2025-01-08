@@ -1,5 +1,5 @@
 name: Second workflowon
-on: workflow_dispatch
+on: workflow_dispatch  # запуск только вручную из раздела action на github 
 
 jobs:
   run-first-command:

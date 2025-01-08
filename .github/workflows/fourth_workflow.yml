@@ -1,0 +1,14 @@
+name: Fourth workflow
+on:
+  workflow_run:  # запуск по завершению другогу workflow
+    workflows: [Third workflow]  # список workflow
+    types:  # обязательно указывается при каком заверщении того workflow будет запускаться этот 
+      - completed
+
+jobs: 
+  hello-command:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Show hello
+          run: echo "Hello world!" 
+

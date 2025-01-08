@@ -5,10 +5,17 @@ jobs:
   run-command:
     runs-on: ubuntu-latest
     steps:
-      - name: File list and copy repo
+      - name: File list 
         run: |-
           ls -l
-      - uses: actions/checkout@v4
+      #- uses: actions/checkout@v4
+      - name: Copy files
+        run: |
+          git init
+          git remote add origin "https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY.git"
+          git fetch origin
+          git checkout main
+
       - name: File list after copying
         run: |-
           ls -l
