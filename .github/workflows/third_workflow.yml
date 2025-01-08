@@ -8,4 +8,5 @@ jobs:
       - name: Display pwd and ls
         run: |-
             pwd
+            cd ../..
             ls -a 
