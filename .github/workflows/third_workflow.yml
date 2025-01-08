@@ -1,0 +1,11 @@
+name: Third workflow
+on: push
+
+jobs:
+  run-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display pwd and ls
+        run: |-
+            pwd
+            ls -a  

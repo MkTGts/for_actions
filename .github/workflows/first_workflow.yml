@@ -1,18 +1,13 @@
-name: First workflowon
+name: Test
 on: push
 
 jobs:
-  run-first-command:
+  first-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Display some Text
-        run: echo "Some text."
-      - name: Command in Multiline
+      - name: tester
         run: |-
-          echo Hello World!
           node -v
-          npm -v 
           python3 --version
 
-          
 
