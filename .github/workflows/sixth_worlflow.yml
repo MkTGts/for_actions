@@ -1,0 +1,25 @@
+name: Six Workflow
+on:
+  push:  # будет отслеживать пуш определенных условий
+    branches:  
+      - main
+      - "page/*"  # page/{любые символы кроме '/'. если со слешом то **}
+      - "!page/blog"  # все кроме page/blog. исключения записываются в конце
+    #branches-ignore:  # используется только несовместно с branches
+      #- "page/blog"  
+    #tags:
+      #- "v1.*"  # 
+      #- "!v1.2.1"
+    #paths:
+      #- "**.html"  # выьерет все html файлы вне зависимости в какой вложенности они находятся
+
+
+jobs:
+  run-first-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Evemt first
+        run: |
+          
+
+  
