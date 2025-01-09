@@ -1,12 +1,12 @@
 name: Eighth workflow
 on: 
-  workflow_dispatch:
-    inputs:
-      titleCustom:
-        description: Type the title
-        type: string
-        required: true
-        default: "Hello World!"
+  workflow_dispatch:  # кастомизация ручного запуска аксшена
+    inputs:  # объект
+      titleCustom:  # ключ
+        description: Type the title  # описание  
+        type: string  # тип
+        required: true  # обязательно ли поле для заполнения
+        default: "Hello World!"  # значение в поле по умолчанию
 
 jobs:
   for-eighth-workflow:
@@ -15,4 +15,4 @@ jobs:
       - name: For eighth workflow
         run: |
           echo: Ok
-          echo: $GITHUB_SHA
+          echo: "Title: ${{ inputs.titleCustom }}"
