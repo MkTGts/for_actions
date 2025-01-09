@@ -9,17 +9,17 @@ on:
         default: "Hello World!"  # значение в поле по умолчанию
       selectCustom:
         description: Select value
-        type: choice
-        options: 
+        type: choice  # выбор значения из нескольких вариантов
+        options:  # список вариантов
           - val 1
           - val 2
           - val 3
           - val 4
-        default: val 2
-      checkCustom:
+        default: val 2  # вариант по умолчанию
+      checkCustom:  
         description: Checkbox
-        type: boolean
-        required: false
+        type: boolean  # чекбокс
+        required: false  # по умолчанию галка не проставлена
 
 jobs:
   for-eighth-workflow:
