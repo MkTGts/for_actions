@@ -1,0 +1,18 @@
+name: Eighth workflow
+on: 
+  workflow_dispatch:
+    inputs:
+      titleCustom:
+        description: Type the title
+        type: string
+        required: true
+        default: "Hello World!"
+
+jobs:
+  for-eighth-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: For eighth workflow
+        run: |
+          echo: Ok
+          echo: $GITHUB_SHA
