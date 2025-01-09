@@ -1,0 +1,13 @@
+name: Seventh workflow
+on:
+  schedule:  # запуск по таймеру через крон
+    - cron: "*/2 * * * *"
+
+jobs:
+  run-first-command:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Event vars
+      run: |
+        echo "Time let's go"
+        echo $GITHUB_SHA
