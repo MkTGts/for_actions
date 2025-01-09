@@ -1,12 +1,25 @@
 name: Eighth workflow
 on: 
   workflow_dispatch:  # кастомизация ручного запуска аксшена
-    inputs:  # объект
-      titleCustom:  # ключ
+    inputs:  # указание на интпуты
+      titleCustom:  # название инпута
         description: Type the title  # описание  
         type: string  # тип
         required: true  # обязательно ли поле для заполнения
         default: "Hello World!"  # значение в поле по умолчанию
+      selectCustom:
+        description: Select value
+        type: choice
+        options: 
+          - val 1
+          - val 2
+          - val 3
+          - val 4
+        default: val 2
+      checkCustom:
+        description: Checkbox
+        type: boolean
+        required: false
 
 jobs:
   for-eighth-workflow:
@@ -15,3 +28,5 @@ jobs:
       - name: For eighth workflow
         run: |
           echo "Title: ${{ inputs.titleCustom }}"
+          echo "Select ${{ inputs.selectCustom }}"
+          echo "Checkbox ${{ inputs.checkCustom }}"
