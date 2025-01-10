@@ -1,7 +1,8 @@
+# запускает workflow по заданному кастомному types
 name: Nineth workflow
 on: 
   repository_dispatch:
-    types: [test_type] 
+    types: [test_type]  # types вот здесь задаются
 
 
 
@@ -12,3 +13,4 @@ jobs:
       - name: Step 1
         run:
           echo "Title ${{ github.event.client_payload.titleTest }}"
+          echo "Title ${{ github.event.client_payload.secondTester }}"

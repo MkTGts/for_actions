@@ -1,6 +1,6 @@
 name: Eighth workflow
 on: 
-  workflow_dispatch:  # кастомизация ручного запуска аксшена
+  workflow_dispatch:  # кастомизация ручного запуска workflow
     inputs:  # указание на интпуты
       titleCustom:  # название инпута
         description: Type the title  # описание  
