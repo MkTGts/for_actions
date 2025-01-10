@@ -1,0 +1,14 @@
+name: Nineth workflow
+on: 
+  repository_dispatch:
+    types: [test_type] 
+
+
+
+jobs:
+  run-nineth-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1
+        run:
+          echo "Title ${{ github.event.client_payload.titleTest }}"

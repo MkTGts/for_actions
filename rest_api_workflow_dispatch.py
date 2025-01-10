@@ -38,7 +38,7 @@ class Workflow_API:
             
         )
 
-        if response.status_code == "204":
+        if response.status_code == 204:
             self.status = "Response Ok"
         else:
             self.status = f"Problem response. Status code = {response.status_code}"
