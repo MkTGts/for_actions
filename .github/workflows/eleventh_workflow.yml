@@ -1,0 +1,22 @@
+name: Eleven workflow
+on: push
+run-name: "Env Testing"
+env:  # создание переменной уровня всего воркфлоу
+  WF_CUSTOM_VAR: WF 1
+ 
+jobs:
+  first-job:
+    env:  # создание переменной уровня джоба
+      JOB_CUSTOM_VAR: JB 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Events vars
+        env:  # создание переменной уровня шага
+          STEP_CUSTOM_VAR: STP 1
+        run: |
+          echo $GITHUB_REF
+          echo "${{ github.ref }}"
+          echo $WF_CUSTOM_VAR
+          echo "${{ env.WF_CUSTOM_VAR }}"
+          echo $JOB_CUSTOM_VAR
+          echo $STEP_CUSTOM_VAR
