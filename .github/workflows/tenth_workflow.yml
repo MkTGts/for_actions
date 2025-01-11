@@ -8,9 +8,9 @@ jobs:
       - name: Contexts and Expressions
         id: context-expression  # id используется для легкого поиска далее
         run: |
-          echo ${{ toJson(github) }}
-          echo ${{ toJson(runner) }} 
-          echo ${{ toJson(job) }}   
-          echo ${{ toJson(steps) }}  
+          echo "${{ toJson(github) }}"
+          echo "${{ toJson(runner) }}" 
+          echo "${{ toJson(job) }}"   
+          echo "${{ toJson(steps) }}"  
 
           
