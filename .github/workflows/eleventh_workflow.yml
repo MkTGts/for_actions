@@ -10,13 +10,16 @@ jobs:
       JOB_CUSTOM_VAR: JB 1
     runs-on: ubuntu-latest
     steps:
+      - name: Set New Var  # еще вариант создания переменной уровня шага. записать в файл
+        run: echo "NEW_CUSTOM_VAR=NewValue" >> "$GITHUB_ENV"
       - name: Events vars
         env:  # создание переменной уровня шага
           STEP_CUSTOM_VAR: STP 1
         run: |
-          echo $GITHUB_REF
+          echo $GITHUB_REF 
           echo "${{ github.ref }}"
           echo $WF_CUSTOM_VAR
           echo "${{ env.WF_CUSTOM_VAR }}"
           echo $JOB_CUSTOM_VAR
           echo $STEP_CUSTOM_VAR
+          echo $GITHUB_ENV
