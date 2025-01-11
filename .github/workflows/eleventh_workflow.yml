@@ -22,4 +22,4 @@ jobs:
           echo "${{ env.WF_CUSTOM_VAR }}"
           echo $JOB_CUSTOM_VAR
           echo $STEP_CUSTOM_VAR
-          echo $GITHUB_ENV
+          echo $NEW_CUSTOM_VAR
