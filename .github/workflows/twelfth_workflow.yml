@@ -1,0 +1,13 @@
+name: Twelfth workflow
+on: push
+run-name: Testing env repository
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Our Var and Secrets
+        run: |
+          echo ${{ vars.STATUS }}
+          echo ${{ secrets.PASSWORD }}
+          

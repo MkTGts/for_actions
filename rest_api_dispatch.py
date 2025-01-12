@@ -112,8 +112,7 @@ def post_repository_dispatch() -> str:
 
 
 if __name__ == "__main__":
-    print(post_repository_dispatch())    
-
+    print(post_repository_dispatch())
 
 
 
