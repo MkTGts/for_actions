@@ -5,6 +5,7 @@ run-name: Testing env repository
 jobs:
   first-job:
     runs-on: ubuntu-latest
+    environment: production 
     steps:
       - name: Our Var and Secrets
         run: |

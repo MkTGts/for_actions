@@ -1,0 +1,15 @@
+name: Fourteenth workflow
+on: workflow_dispatch
+run-name: Testing Cache
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4  # копирует файлы из репы
+      - name: install-req  # здесь будет устанавлиавть зависимости питона
+        run: |
+          pip install -r requirements.txt
+      - name: pip-list  # выводит на экран установленные пакеты pip
+        run: |
+          pip list
