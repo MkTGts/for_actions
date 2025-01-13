@@ -7,15 +7,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4  # копирует файлы из репы
+      - name: Cached pip packages
+        id: cache-pip
+        uses: actions/cache@v3
+        with:
+          path: ./.venv
+          key: cache-file
       - name: install-req  # здесь будет устанавлиавть зависимости питона
         run: |
+          python3 -m venv venv
+          source ./venv/bin/activate
           pip install -r requirements.txt
       - name: pip-list  # выводит на экран установленные пакеты pip
         run: |
           pip list
       - name: go-get-yandex
         run: |
-          pwd
           ls -la
           echo "\n\n\n"
           python3 get_url.py
