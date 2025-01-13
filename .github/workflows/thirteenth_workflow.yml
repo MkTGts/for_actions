@@ -1,0 +1,23 @@
+name: Thirteenth Workflow
+on: push
+run-name: Tusting Functions Workflow
+
+jobs:
+  first-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First Step  # будет засыпать на 30 сек, чтобы дать время запустить вручную отмену
+        run: |
+          sleep 30
+      - name: Runs on Canceled  # отмена вручную
+        if: ${{ cancelled() }}
+        run: echo "Runs on Canceled"
+      - name: Runs on any case  # любой запуск 
+        if : ${{ always() }}
+        run: echo "Runs on any case"
+      - name: Runs on Success  # удачный запуск
+        if: ${{ success() }}
+        run: echo "Runs on Success"
+      - name: Runs on Failure  # предыдущий шаг завершился с ошибкой
+        if: ${{ failure() }}
+        run: echo "Runs on Failure"
