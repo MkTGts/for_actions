@@ -15,7 +15,6 @@ jobs:
           pip list
       - name: go-get-yandex
         run: |
-          cd ~
           ls -la
           echo "\n\n\n"
           python3 get_url.py
