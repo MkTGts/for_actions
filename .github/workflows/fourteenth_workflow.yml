@@ -13,3 +13,9 @@ jobs:
       - name: pip-list  # выводит на экран установленные пакеты pip
         run: |
           pip list
+      - name: go-get-yandex
+        run: |
+          cd ~
+          ls -la
+          echo "\n\n\n"
+          python3 get_url.py
