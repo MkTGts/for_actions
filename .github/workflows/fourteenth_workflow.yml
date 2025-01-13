@@ -7,12 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4  # копирует файлы из репы
-      - name: Cached pip packages
-        id: cache-pip
-        uses: actions/cache@v3
-        with:
-          path: ./venv
-          key: cache-file
+      - name: Cached pip packages  # шаг кжширования окружения
+        id: cache-pip  # задет id
+        uses: actions/cache@v3  # подключает сторонний экшен
+        with:  # задает параметры кэширования
+          path: ./venv  # директория которую будет кэшировать
+          key: ${{ runner.os }}-cache-venv-${{ hashFiles('**/requirements*.txt') }}  # названия файла кэширования
+          restore-keys: |  # на случай если не достанет хэш файла
+            ${{ runner.os }}-cache-venv
+            ${{ runner.os }}
       - name: install-req  # здесь будет устанавлиавть зависимости питона
         run: |
           python3 -m venv venv
@@ -29,3 +32,4 @@ jobs:
       - name: finaly-test
         run: |
           ls -la
+          echo 
