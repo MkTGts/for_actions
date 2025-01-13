@@ -26,3 +26,6 @@ jobs:
           ls -la
           echo "\n\n\n"
           python3 get_url.py
+      - name: finaly-test
+        run: |
+          ls -la
