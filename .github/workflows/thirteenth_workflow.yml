@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: First Step  # будет засыпать на 30 сек, чтобы дать время запустить вручную отмену
         run: |
-          sleep 30
+          exit 1
       - name: Runs on Canceled  # отмена вручную
         if: ${{ cancelled() }}
         run: echo "Runs on Canceled"
