@@ -11,7 +11,7 @@ jobs:
           expr 2 + 2 > math-result.txt
           ls -la
       - name: Upload result file  # использование экшена загрузки артефакта
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: math-result  # ключ для названия файла 
           path: math-result.txt # путь к файлу
@@ -21,7 +21,7 @@ jobs:
     needs: first-job
     steps:
       - name: Download file
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: math-result
       - name: Math Expression
@@ -29,7 +29,7 @@ jobs:
           value=`cat math-result.txt`
           expr $value \* 2 > math-result.txt
       - name: Upload result file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: math-result
           path: math-result.txt
@@ -40,7 +40,7 @@ jobs:
     needs: another-job  # джобы должны запускатсья последовательно а не параллельно как по умолчанию
     steps:
       - name: Download file  # загрузка файла артефакта
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: math-result  # ключ по которому будет доставать артефакт
       - name: Display files data
