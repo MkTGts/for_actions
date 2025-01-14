@@ -6,19 +6,13 @@ jobs:
   testing-matrix:
     strategy:
       matrix:
-        digs: [12, 14, 18]
+        node-version: [12, 14, 18]
+        vm-os: [ubuntu-latest, windows-latest]
  
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.vm-os }}
     steps:
-      - name: display-dig
-        run: |
-          echo ${{ matrix.digs }}
-
-
-   # runs-on: ubuntu-latest
-  #  steps:
-  #    - run: node -v
-   #   - uses: actions/setup-node@v3
-   #     with:
-    #      node-version: ${{ matrix.node-version }}
-   #   - run: node -v
+      - run: node -v
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: node -v
