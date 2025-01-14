@@ -1,0 +1,16 @@
+name: Fifteenth Workflow
+on: push
+run-name: Artifact testing
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Math expression  # создается мат. выражение и результат записывается в файл
+        run: expr 2 + 2 > math-result.txt
+      - name: Upload result file  # использование экшена загрузки артефакта
+        uses: actions/download-artifact@v4
+        with:
+          name: math-result  # ключ для названия файла 
+          path: math-result.txt # путь к файлу
+        
