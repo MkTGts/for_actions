@@ -11,36 +11,35 @@ jobs:
           expr 2 + 2 > math-result.txt
           ls -la
       - name: Upload result file  # использование экшена загрузки артефакта
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: math-result  # ключ для названия файла 
           path: math-result.txt # путь к файлу
 
-  another-job:
+  another-job:  # джоб для внесения изменений в артефакт
     runs-on: ubuntu-latest
-    needs: first-job
+    needs: first-job  # запуск после джоба создания
     steps:
-      - name: Download file
-        uses: actions/download-artifact@v4
+      - name: Download file  # загрузка файла артефакта
+        uses: actions/download-artifact@v3
         with:
-          name: math-result
-      - name: Math Expression
+          name: math-result  # ключ по которому будет доставать артефакт
+      - name: Edit artifact
         run: |
           value=`cat math-result.txt`
           expr $value \* 2 > math-result.txt
-      - name: Upload result file
-        uses: actions/upload-artifact@v4
+      - name: Upload result file  # использование экшена загрузки артефакта
+        uses: actions/upload-artifact@v3
         with:
-          name: math-result
-          path: math-result.txt
+          name: math-result  # ключ для названия файла 
+          path: math-result.txt # путь к файлу
  
-          
   second-job:
     runs-on: ubuntu-latest
     needs: another-job  # джобы должны запускатсья последовательно а не параллельно как по умолчанию
     steps:
       - name: Download file  # загрузка файла артефакта
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v3
         with:
           name: math-result  # ключ по которому будет доставать артефакт
       - name: Display files data
