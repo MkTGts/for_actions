@@ -1,9 +1,15 @@
 name: "Install and Cache Modules in Venv"
 description: "Some description"
+inputs:
+  caching:
+    required: false 
+    description: Caching required
+    default: 'true' 
 runs:
   using: 'composite'
   steps:
     - name: Cached pip packages  # шаг кжширования окружения
+      if: inputs.caching == 'true'
       id: cache-pip  # задет id
       uses: actions/cache@v3  # подключает сторонний экшен
       with:  # задает параметры кэширования

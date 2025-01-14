@@ -8,4 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name:
-        uses: ./.github/actions/cache-module
+        uses: ./.github/actions/cache-module  # свой action
+        with:
+          caching: 'false'
