@@ -1,27 +1,23 @@
 name: Fifteenth Workflow
 on: push
-run-name: Artifact testing
 
 jobs:
-  first-job:
+  first-jobs:
     runs-on: ubuntu-latest
     steps:
-      - name: Math expression  # создается мат. выражение и результат записывается в файл
-        run: |
-          expr 2 + 2 > math-result.txt
-          ls -la
-      - name: Upload result file  # использование экшена загрузки артефакта
-        uses: actions/upload-artifact@v4
+      - name: Math expression
+        run: expr 2 + 2 > math-result.txt
+      - name: Upload result file
+        uses: actions/upload-artifact@v3
         with:
-          name: math-result  # ключ для названия файла 
-          path: math-result.txt # путь к файлу
-
+          name: math-result
+          path: math-result.txt
   another-job:
     runs-on: ubuntu-latest
-    needs: first-job
+    needs: first-jobs
     steps:
       - name: Download file
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v3
         with:
           name: math-result
       - name: Math Expression
@@ -29,20 +25,19 @@ jobs:
           value=`cat math-result.txt`
           expr $value \* 2 > math-result.txt
       - name: Upload result file
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: math-result
           path: math-result.txt
- 
-          
   second-job:
     runs-on: ubuntu-latest
-    needs: another-job  # джобы должны запускатсья последовательно а не параллельно как по умолчанию
+    needs: another-job
     steps:
-      - name: Download file  # загрузка файла артефакта
-        uses: actions/download-artifact@v4
+      - name: Download file
+        uses: actions/download-artifact@v3
         with:
-          name: math-result  # ключ по которому будет доставать артефакт
-      - name: Display files data
+          name: math-result
+      - name: Print File
         run: |
-          cat math-result.txt
+          value=`cat math-result.txt`
+          echo $value
