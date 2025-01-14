@@ -1,0 +1,35 @@
+name: "Install and Cache Modules in Venv"
+description: "Some description"
+runs:
+  using: 'composite'
+  steps:
+    - name: Cached pip packages  # шаг кжширования окружения
+      id: cache-pip  # задет id
+      uses: actions/cache@v3  # подключает сторонний экшен
+      with:  # задает параметры кэширования
+        path: ./venv  # директория которую будет кэшировать
+        key: ${{ runner.os }}-cache-venv-${{ hashFiles('**/requirements*.txt') }}  # названия файла кэширования
+        restore-keys: |  # на случай если не достанет хэш файла
+            ${{ runner.os }}-cache-venv
+            ${{ runner.os }}
+    - name: install-req  # здесь будет устанавлиавть зависимости питона
+      run: |
+          python3 -m venv venv
+          source ./venv/bin/activate
+          pip install -r requirements.txt
+      shell: bash
+    - name: pip-list  # выводит на экран установленные пакеты pip
+      run: |
+          pip list
+      shell: bash
+    - name: go-get-yandex
+      run: |
+          ls -la
+          echo "\n\n\n"
+          python3 get_url.py
+      shell: bash
+    - name: finaly-test
+      run: |
+          ls -la
+          echo 
+      shell: bash
