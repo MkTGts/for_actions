@@ -4,15 +4,17 @@ run-name: Matrix
 
 jobs:
   testing-matrix:
+    continue-on-error: true  # продолжать даже если один воркфлоу вернет ошибку
     strategy:
       matrix:
-        node-version: [12, 14, 18]
-        vm-os: [ubuntu-latest, windows-latest]
- 
-    runs-on: ${{ matrix.vm-os }}
+        node-version: [12, 14, 18]  # первая матрица
+        vm-os: [ubuntu-latest, windows-latest]  # вторая матрица
+      fail-fast: false  # разрешает запускаться дальнейшим воркфлоу, даже если этот вернет ошибку
+      max-parallel: 2  # установка лимита количесива максимально запускаемых воркфлоу
+    runs-on: ${{ matrix.vm-os }}  # поочередно подставляются os 
     steps:
       - run: node -v
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.node-version }}  # поочередно подставляются версии нода
       - run: node -v
