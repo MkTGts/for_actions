@@ -7,7 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Math expression  # создается мат. выражение и результат записывается в файл
-        run: expr 2 + 2 > math-result.txt
+        run: |
+          expr 2 + 2 > math-result.txt
+          ls -la
       - name: Upload result file  # использование экшена загрузки артефакта
         uses: actions/download-artifact@v4
         with:

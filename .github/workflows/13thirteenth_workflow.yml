@@ -22,7 +22,7 @@ jobs:
         if: ${{ success() }}
         run: echo "Runs on Success"
       - name: Runs on Failure  # предыдущий шаг завершился с ошибкой
-        if: ${{ failure() }}
+        if: ${{ failure() && steps.error-step.conclusion == 'failure' }}
         run: echo "Runs on Failure"
   second-job:
       runs-on: ubuntu-latest
