@@ -10,10 +10,10 @@ jobs:
         node-version: [12, 14, 18]  # первая матрица
         vm-os: [ubuntu-latest, windows-latest]  # вторая матрица
         include:  # добавляет значения
-          - os: macos-latest  
+          - vm-os: macos-latest  
             node-version: 17
         exclude:  # отменяет значения
-          - os: ubuntu-latest
+          - vm-os: ubuntu-latest
             node-version: 14
       fail-fast: false  # разрешает запускаться дальнейшим воркфлоу, даже если этот вернет ошибку
       max-parallel: 2  # установка лимита количесива одновременно выполняемых воркфлоу
