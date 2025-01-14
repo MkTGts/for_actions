@@ -26,7 +26,7 @@ jobs:
           name: math-result  # ключ по которому будет доставать артефакт
       - name: Edit artifact
         run: |
-          value=`math-result.txt`
+          value=`cat math-result.txt`
           expr $value \* 2 > math-result.txt
       - name: Upload result file  # использование экшена загрузки артефакта
         uses: actions/upload-artifact@v4
