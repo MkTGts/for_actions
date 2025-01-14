@@ -1,0 +1,17 @@
+name: Sixteenth_workflow
+on: push
+run-name: Matrix
+
+jobs:
+  testing-matrix:
+    strategy:
+      matrix:
+        node-version: [12, 14, 18]
+
+    runs-on: ubuntu-latest
+    steps:
+      - run: node -v
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: nove -v
