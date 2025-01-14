@@ -6,10 +6,14 @@ on:
         description: "Custom Title"
         type: string
         default: "Testing text title"
-        required: false
+        required: false  # не обязательный
 
 jobs:
   call-workflow:
     uses: ./.github/workflows/workflow.yml
     with:
       title: ${{ inputs.title }}
+  call-external-workflow:
+    uses: MkTGts/workflows/.github/workflows/workflow.yml@main
+    secrets:
+      PASSWORD: ${{ secrets.PASSWORD }}
