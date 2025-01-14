@@ -1,0 +1,16 @@
+name: Reusable Workflow
+on:
+  workflow_call:  # воркфлоу, который будет вызываться
+    inputs:
+      title:
+        description: "Custom Title"
+        type: string
+        default: "Testing text title"
+        required: false
+    
+jobs:
+  console-log:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Title
+        run: echo "${{ inputs.title }}"
