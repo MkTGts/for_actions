@@ -1,7 +1,10 @@
 name: Concurrency
 on: workflow_dispatch
 run-name: Testing Concurrency
-concurrency: concurrency-testing
+concurrency: 
+  group: concurrency-testing  # id имя 
+  cancel-in-progress: true  # будет отменять все предыдущие и запускать только последний
+
 jobs: 
   test-concurrency:
     runs-on: ubuntu-latest
