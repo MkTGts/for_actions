@@ -1,0 +1,13 @@
+name: Eighteenth workflow
+on: workflow_dispatch
+run-name: Test my Actions
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name:
+        uses: ./.github/actions/cache-module  # свой action
+        with:
+          caching: 'false'
